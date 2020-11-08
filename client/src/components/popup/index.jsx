@@ -1,14 +1,13 @@
 import React from 'react'
-import { Modal,Button } from 'react-bootstrap';
+import { Modal,Button,Card } from 'react-bootstrap';
 import ListItem from './listItem'
-
 
 class Popup extends React.Component
 {
     constructor(props)
     {
         super(props)
-        this.state={title:"",list : [],todo:""}
+        this.state={title:"",list : [],todo:"",color:""}
         this.setValue = this.setValue.bind(this)
         this.insTodo = this.insTodo.bind(this)
         this.deleteTodo = this.deleteTodo.bind(this)
@@ -54,6 +53,7 @@ class Popup extends React.Component
               <Modal show={true} onHide={this.props.handleClose} backdrop="static">
                 <Modal.Header>
                   <Modal.Title>Create a Note</Modal.Title>
+                  <input name="color" defaultValue="#FFFFFF" type="color" onChange={this.setValue}/>
                 </Modal.Header>
                 <Modal.Body>
                     <input name="title" type="text" placeholder="Title" onChange={this.setValue}/>

@@ -6,6 +6,7 @@ header {
     outline:none;
     border:none;
     border-color: none;
+    background: none;
 }
 
 input:checked+p {
@@ -20,6 +21,14 @@ input[type=text]{
   padding: 4px;
   outline: none;
   font-size: 1.2em;
+}
+
+input[type=color]{
+  border:none;
+  padding:2px;
+  outline:none;
+  height:40px;
+  width:40px;
 }
 
 .todoItem {
