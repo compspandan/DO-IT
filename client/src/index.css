@@ -1,1 +1,37 @@
+header {
+    background:purple;
+    padding:1% 0 1% 0;
+}
+.addNoteBtn,button.addNoteBtn:hover,button.addNoteBtn:focus {
+    outline:none;
+    border:none;
+    border-color: none;
+    background: none;
+}
 
+input:checked+p {
+  text-decoration: line-through;
+  text-decoration-color:black;
+  color:rgba(122, 116, 116, 0.904);
+}
+
+input[type=text]{
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+}
+
+input[type=color]{
+  border:none;
+  padding:2px;
+  outline:none;
+  height:40px;
+  width:40px;
+}
+
+.todoItem {
+  margin: 0 0 0 3%;
+  width:90%;
+}
