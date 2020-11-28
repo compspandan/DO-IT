@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal,Button,Card } from 'react-bootstrap';
 import ListItem from './listItem'
-
+import cards from '../body'
 class Popup extends React.Component
 {
     constructor(props)
@@ -12,6 +12,7 @@ class Popup extends React.Component
         this.insTodo = this.insTodo.bind(this)
         this.deleteTodo = this.deleteTodo.bind(this)
         this.setChecked = this.setChecked.bind(this)
+        this.onsavebutton=this.onsavebutton.bind(this)
         this.setRef = (elem)=>{this.input = elem}
     }
     insTodo(event)
@@ -46,6 +47,10 @@ class Popup extends React.Component
           return({list:t})
         })
     }
+    onsavebutton(event)
+    {
+        this.props.onsave(this.state.list,this.state.color,this.state.title)
+    }
     render()
     {
         return (
@@ -77,7 +82,7 @@ class Popup extends React.Component
                   <Button variant="secondary" onClick={this.props.handleClose}>
                     Close
                   </Button>
-                  <Button variant="primary" onClick={this.props.handleClose}>
+                  <Button variant="primary" onClick={this.onsavebutton} >
                     Save
                   </Button>
                 </Modal.Footer>
