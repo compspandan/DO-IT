@@ -6,7 +6,7 @@ class Header extends React.Component
     constructor(props)
     {
         super(props)
-        this.state = {show:false,save:false,newlist:[],newcolor:"",newtitle:"",cardsId: [],noOfCards: 0}
+        this.state = {show:false,save:false,newlist:[],newcolor:"",newtitle:"",cardsId: [],noOfCards: 1}
         this.handleClose  = this.handleClose.bind(this)
         this.handleShow = this.handleShow.bind(this)
         this.onSave = this.onSave.bind(this)

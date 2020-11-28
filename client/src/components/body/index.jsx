@@ -16,7 +16,7 @@ class cardBody extends React.Component {
         return (<div>
             {this.props.cardsid.map(item =>
             (item>0)? (<Cards id1 = {item} list={this.props.list} color={this.props.color} 
-                    title={this.props.title} delete2={this.handleDecrement} />):<doesntDoAnything></doesntDoAnything>
+                    title={this.props.title} delete2={this.handleDecrement} />):null
             )}
             </div>)
     }

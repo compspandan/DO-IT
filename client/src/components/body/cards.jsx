@@ -30,16 +30,12 @@ class Cards extends React.Component {
             </Card.Title> 
             {this.state.list.map((listItem,index)=>
             
-            <div><Checkbox checked={listItem.checked} color={this.state.color} onChange={this.checkit}  inputProps={{ 'aria-label': 'primary checkbox' }}/>
+            <div><Checkbox id = {index} checked={listItem.checked} color={this.state.color} onChange={this.checkit}  inputProps={{ 'aria-label': 'primary checkbox' }}/>
              <span style={{textDecorationLine:listItem.checked?'line-through':''}}>{listItem.value}</span><br/>
-             
-            
-            
+                 
              </div>
                 
             )}
-            
-
 
             </Card.Body>
             </Card>
