@@ -1,4 +1,5 @@
-import { model, Schema, Document } from 'mongoose';
+const mongoose = require("mongoose")
+const {Schema} = mongoose
 
 const taskSchema = new Schema({
     value : String,
@@ -12,3 +13,4 @@ const todoSchema = new Schema({
 })
 
 const todo = mongoose.model("todo",todoSchema);
+module.exports = todo
