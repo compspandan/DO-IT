@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const todoRouter = require('./router')
-const { json } = require("body-parser")
 
 const app = express()
 const PORT = 5000
