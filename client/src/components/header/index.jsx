@@ -1,6 +1,7 @@
 import React from 'react'
 import Popup from '../popup'
 import Cards from '../body/index'
+import axios from 'axios'
 class Header extends React.Component
 {
     constructor(props)
@@ -24,17 +25,26 @@ class Header extends React.Component
     onSave(list,color,title)
     {
         this.handleClose()
-        this.setState(() => {
-                    let l=this.state.cardsId;
-                    l.push(this.state.noOfCards);
-                    return {cardsId: l};
-                }
-        );
-        this.setState({noOfCards: this.state.noOfCards+1})
-        this.setState({save:true})
-        this.setState({newlist:list})
-        this.setState({newcolor:color})
-        this.setState({newtitle:title})
+        // console.log(list)
+        // console.log(color)
+        // this.setState(() => {
+        //             let l=this.state.cardsId;
+        //             l.push(this.state.noOfCards);
+        //             return {cardsId: l};
+        //         }
+        // );
+        // this.setState({noOfCards: this.state.noOfCards+1})
+        // this.setState({save:true})
+        // this.setState({newlist:list})
+        // this.setState({newcolor:color})
+        // this.setState({newtitle:title})
+        axios.post("http://localhost:5000/todo",{
+            title: title,
+            color: color,
+            list: list
+        })
+        .then((res)=> console.log(res))
+        .catch((error)=> console.log(error))
     }
     decrementCounter(id1){
         console.log(id1);

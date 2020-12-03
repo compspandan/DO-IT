@@ -21,7 +21,6 @@ class Popup extends React.Component
             return {list:prevState.list.concat({value:prevState.todo,checked:false}),todo:""}
         })
         this.input.value = ""
-        console.log(this.state.list)
     }
     setValue(event)
     {
