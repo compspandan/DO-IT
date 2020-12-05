@@ -8,6 +8,7 @@ class Header extends React.Component
     {
         super(props)
         this.state = {show:false}
+        this.cardRef = React.createRef()
         this.handleClose  = this.handleClose.bind(this)
         this.handleShow = this.handleShow.bind(this)
         this.onSave = this.onSave.bind(this)
@@ -32,6 +33,7 @@ class Header extends React.Component
         })
         .then((res)=> {
             console.log('success!!!!')
+            this.cardRef.current.getAllTodos()
         })
         .catch((error)=> console.log(error))
     }
@@ -39,6 +41,7 @@ class Header extends React.Component
         console.log(id1);
         axios.delete("http://localhost:5000/todos/"+id1).then((res)=>{
             console.log('recorded delete...no issues')
+            this.cardRef.current.getAllTodos()
         }).catch((err)=>console.log(err))
     }
     render()
@@ -54,7 +57,7 @@ class Header extends React.Component
             </button>
             {this.state.show && <Popup handleClose={this.handleClose} onsave={this.onSave}/>}
         </header>
-        <Cards delete1={this.decrementCounter}/>
+        <Cards ref={this.cardRef} delete1={this.decrementCounter}/>
 
         </div>
         )

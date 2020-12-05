@@ -8,6 +8,7 @@ class cardBody extends React.Component {
             super(props)  
             this.handleDecrement=this.handleDecrement.bind(this)
             this.updateTodoLists=this.updateTodoLists.bind(this)
+            this.getAllTodos=this.getAllTodos.bind(this)
             this.state={
                 todoLists:[]
             }
@@ -19,9 +20,7 @@ class cardBody extends React.Component {
     }
     componentDidMount()
     {
-        axios.get("http://localhost:5000/todos/").then((res)=> {
-            this.setState({todoLists: res.data.todolist})
-        }).catch((err)=> console.log(err))
+        this.getAllTodos()
     }
     updateTodoLists(id1)
     {
@@ -36,6 +35,12 @@ class cardBody extends React.Component {
                 return s
             })
         })
+    }
+    getAllTodos()
+    {
+        axios.get("http://localhost:5000/todos/").then((res)=> {
+            this.setState({todoLists: res.data.todolist})
+        }).catch((err)=> console.log(err))
     }
     render() {
         return (<div>
