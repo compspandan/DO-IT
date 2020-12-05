@@ -11,6 +11,15 @@ router.get("/",function(req,res){  //gets a list of all todo cards
     })
 })
 
+router.get("/:todolistId",function(req,res){  //gets a list of all todo cards
+    todo.findOne({_id:req.params.todolistId},function(err,todolist){
+        if(err)
+            res.json({err,message:"some error occurred"}).status(404)
+        else
+            res.json({todolist:todolist,message:"successful"}).status(200)
+    })
+})
+
 router.post("/",function(req,res){  //create a new todo card
     const newTodo = new todo({
         title : req.body.title,
@@ -25,12 +34,10 @@ router.post("/",function(req,res){  //create a new todo card
     })
 })
 
-router.put("/:todolistId",function(req,res){
-    todo.replaceOne({_id:req.params.todolistId},
+router.patch("/:todolistId",function(req,res){
+    todo.updateOne({_id:req.params.todolistId},
         {
-            title : req.body.title,
-            color : req.body.color,
-            list : req.body.list
+            $set : req.body
         },
         function(err,doc){
         if (!err) {
