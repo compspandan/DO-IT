@@ -11,7 +11,7 @@ router.get("/",function(req,res){  //gets a list of all todo cards
     })
 })
 
-router.post("/",function(req,res){  //create a new todo card
+router.post("/todo",function(req,res){  //create a new todo card
     const newTodo = new todo({
         title : req.body.title,
         color : req.body.color,
