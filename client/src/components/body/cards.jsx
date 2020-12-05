@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card } from 'react-bootstrap';
-import { Checkbox, Button, IconButton} from '@material-ui/core';
+import { Checkbox, IconButton} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios'
 class Cards extends React.Component {
@@ -10,25 +10,16 @@ class Cards extends React.Component {
     }
 
     checkit(event)
-    {
-        /*console.log(event.target.id);
-        this.setState(()=>{
-            
-            if(temp[event.target.id].checked) temp[event.target.id].checked=false
-            else temp[event.target.id].checked=true
-            return({list:temp})  });*/
+    {       console.log("entered")
             let temp = this.props.list
             if(temp[event.target.id].checked) temp[event.target.id].checked=false
             else temp[event.target.id].checked=true
-            axios.put("http://localhost:5000/"+this.props.id1,{
-                title: this.props.title,
-                color: this.props.color,
+            axios.patch("http://localhost:5000/todos/"+this.props.id1,{
                 list: temp
             }).then((res)=>{
                 console.log('ready to update checkbox status')
-                
+                this.props.update(this.props.id1)
             })
-            /*<Button style={{border: '2px solid black',float: 'right'}} onClick={()=>{this.props.delete2(this.props.id1)}} variant={this.state.color} size="sm"><b> Delete </b> </Button> */
     }
     render() { 
         return (<div style={{float: 'left'}}>
@@ -41,11 +32,10 @@ class Cards extends React.Component {
             </Card.Title> 
             {this.props.list.map((listItem,index)=>
             
-            <div>
-             <Checkbox id = {index} checked={listItem.checked} color={this.props.color} onChange={this.checkit}  inputProps={{ 'aria-label': 'primary checkbox' }}/>
-             <span style={{textDecorationLine:listItem.checked?'line-through':''}}>{listItem.value}</span><br/>
-                 
-             </div>
+            <div key={index}>
+                <Checkbox id = {index} checked={listItem.checked} color={this.props.color} onChange={this.checkit}  inputProps={{ 'aria-label': 'primary checkbox' }}/>
+                <span style={{textDecorationLine:listItem.checked?'line-through':''}}>{listItem.value}</span><br/>
+            </div>
                 
             )}
 

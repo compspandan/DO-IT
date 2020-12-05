@@ -7,7 +7,7 @@ class Header extends React.Component
     constructor(props)
     {
         super(props)
-        this.state = {show:false,save:false,newlist:[],newcolor:"",newtitle:"",cardsId: [],noOfCards: 1}
+        this.state = {show:false}
         this.handleClose  = this.handleClose.bind(this)
         this.handleShow = this.handleShow.bind(this)
         this.onSave = this.onSave.bind(this)
@@ -25,20 +25,7 @@ class Header extends React.Component
     onSave(list,color,title)
     {
         this.handleClose()
-        // console.log(list)
-        // console.log(color)
-        // this.setState(() => {
-        //             let l=this.state.cardsId;
-        //             l.push(this.state.noOfCards);
-        //             return {cardsId: l};
-        //         }
-        // );
-        // this.setState({noOfCards: this.state.noOfCards+1})
-        // this.setState({save:true})
-        // this.setState({newlist:list})
-        // this.setState({newcolor:color})
-        // this.setState({newtitle:title})
-        axios.post("http://localhost:5000/todo",{
+        axios.post("http://localhost:5000/todos",{
             title: title,
             color: color,
             list: list
@@ -50,9 +37,7 @@ class Header extends React.Component
     }
     decrementCounter(id1){
         console.log(id1);
-        //const temp = this.state.cardsId.map(c => c==id1?c=-1:c);
-        //this.setState({cardsId: temp});
-        axios.delete("http://localhost:5000/"+id1).then((res)=>{
+        axios.delete("http://localhost:5000/todos/"+id1).then((res)=>{
             console.log('recorded delete...no issues')
         }).catch((err)=>console.log(err))
     }
