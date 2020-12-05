@@ -43,13 +43,18 @@ class Header extends React.Component
             color: color,
             list: list
         })
-        .then((res)=> console.log(res))
+        .then((res)=> {
+            console.log('success!!!!')
+        })
         .catch((error)=> console.log(error))
     }
     decrementCounter(id1){
         console.log(id1);
-        const temp = this.state.cardsId.map(c => c==id1?c=-1:c);
-        this.setState({cardsId: temp});
+        //const temp = this.state.cardsId.map(c => c==id1?c=-1:c);
+        //this.setState({cardsId: temp});
+        axios.delete("http://localhost:5000/"+id1).then((res)=>{
+            console.log('recorded delete...no issues')
+        }).catch((err)=>console.log(err))
     }
     render()
     {
@@ -64,7 +69,7 @@ class Header extends React.Component
             </button>
             {this.state.show && <Popup handleClose={this.handleClose} onsave={this.onSave}/>}
         </header>
-        {this.state.save && <Cards cardsid={this.state.cardsId} list={this.state.newlist} color={this.state.newcolor} title={this.state.newtitle} delete1={this.decrementCounter}/> }
+        <Cards delete1={this.decrementCounter}/>
 
         </div>
         )
