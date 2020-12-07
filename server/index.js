@@ -8,11 +8,9 @@ const app = express()
 dotenv.config()
 const PORT = process.env.PORT || 5000
 
-// const mongodb_url = process.env.PORT ?
-//                      `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.8l2ly.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
-//                      :"mongodb://localhost:27017/todo-test"
-
-const mongodb_url = `mongodb+srv://swaroop:8618966682@cluster0.8l2ly.mongodb.net/todoDataBase?retryWrites=true&w=majority`
+const mongodb_url = process.env.PORT ?
+                     `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.8l2ly.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+                     :"mongodb://localhost:27017/todo-test"
                     
 app.use(cors())
 app.use(bodyParser.json())
