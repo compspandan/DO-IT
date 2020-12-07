@@ -2,6 +2,14 @@ import React from 'react'
 import Popup from '../popup'
 import Cards from '../body/index'
 import axios from 'axios'
+import AppBar from '@material-ui/core/AppBar';
+import AddCircleSharpIcon from '@material-ui/icons/AddCircleSharp';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import Toolbar from '@material-ui/core/Toolbar';
+import { Checkbox, Button, IconButton} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 class Header extends React.Component
 {
     constructor(props)
@@ -47,7 +55,7 @@ class Header extends React.Component
     render()
     {
         return(
-        <div>
+        /*<div>
         <header>
             <button style={{background:"purple",color:"white"}} className="addNoteBtn" onClick={this.handleShow}>
             <svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-plus-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -57,8 +65,27 @@ class Header extends React.Component
             </button>
             {this.state.show && <Popup handleClose={this.handleClose} onsave={this.onSave}/>}
         </header>
-        <Cards ref={this.cardRef} delete1={this.decrementCounter}/>
-
+        <Cards ref={this.cardRef} delete1={this.decrementCounter}/>*/
+        <div>
+        <AppBar position="static" style={{backgroundColor: 'rgb(30,30,30,0.9)'}}>
+        <Toolbar>
+        <IconButton onClick={this.handleShow} color="inherit" edge="start" style={{minHeight:'0'}}>
+      <AddCircleSharpIcon/>
+    </IconButton>
+    <Typography variant="h4" color="inherit" align="center" style={{flexGrow: 1}}><b>
+      DO-IT!</b>
+    </Typography>
+    <IconButton href="https://www.instagram.com/" target="_blank" color="inherit">
+    <InstagramIcon style={{minWidth: '35'}} onClick/>
+    </IconButton><IconButton href="https://www.linkedin.com/" target="_blank" color="inherit">
+    <LinkedInIcon style={{minWidth: '35'}}/>
+    </IconButton><IconButton href="https://github.com/compspandan/DO-IT" target="blank" color="inherit">
+    <GitHubIcon style={{minWidth: '35'}}/>   
+    </IconButton>
+        </Toolbar>
+      </AppBar>
+      {this.state.show && <Popup handleClose={this.handleClose} onsave={this.onSave}/>}
+      <Cards ref={this.cardRef} delete1={this.decrementCounter}/>
         </div>
         )
     }
