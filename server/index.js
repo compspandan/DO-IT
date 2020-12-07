@@ -6,7 +6,7 @@ const dotenv = require("dotenv")
 const todoRouter = require('./router')
 const app = express()
 dotenv.config()
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 // const mongodb_url = process.env.PORT ?
 //                      `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.8l2ly.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
