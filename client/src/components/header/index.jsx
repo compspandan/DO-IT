@@ -48,7 +48,7 @@ class Header extends React.Component
     }
     decrementCounter(id1){
         console.log(id1);
-        axios.delete("http://localhost:5000/todos/"+id1).then((res)=>{
+        axios.delete(baseURL+"todos/"+id1).then((res)=>{
             console.log('recorded delete...no issues')
             this.cardRef.current.getAllTodos()
         }).catch((err)=>console.log(err))
