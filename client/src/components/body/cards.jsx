@@ -3,6 +3,7 @@ import {Card } from 'react-bootstrap';
 import { Checkbox, IconButton} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios'
+import { baseURL } from '../../config';
 class Cards extends React.Component {
     constructor(props){
         super(props)
@@ -14,7 +15,7 @@ class Cards extends React.Component {
             let temp = this.props.list
             if(temp[event.target.id].checked) temp[event.target.id].checked=false
             else temp[event.target.id].checked=true
-            axios.patch("http://localhost:5000/todos/"+this.props.id1,{
+            axios.patch(baseURL+"todos/"+this.props.id1,{
                 list: temp
             }).then((res)=>{
                 console.log('ready to update checkbox status')

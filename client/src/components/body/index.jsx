@@ -3,6 +3,7 @@ import {Card, Button } from 'react-bootstrap';
 import { Checkbox } from '@material-ui/core';
 import Cards from './cards'
 import axios from 'axios'
+import { baseURL } from '../../config';
 class cardBody extends React.Component {
     constructor(props){ 
             super(props)  
@@ -24,7 +25,7 @@ class cardBody extends React.Component {
     }
     updateTodoLists(id1)
     {
-        axios.get("http://localhost:5000/todos/"+id1).then((res)=> {
+        axios.get(baseURL+"todos/"+id1).then((res)=> {
             this.setState(function(prev){
                 const s = prev.todoLists.map(function(item){
                     if(item._id === id1)
@@ -38,7 +39,7 @@ class cardBody extends React.Component {
     }
     getAllTodos()
     {
-        axios.get("http://localhost:5000/todos/").then((res)=> {
+        axios.get(baseURL+"todos/").then((res)=> {
             this.setState({todoLists: res.data.todolist})
         }).catch((err)=> console.log(err))
     }

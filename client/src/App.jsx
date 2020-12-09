@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/header'
+import {baseURL} from './config'
 class App extends React.Component
 {
     render()
